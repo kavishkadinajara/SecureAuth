@@ -19,7 +19,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
       };
     </script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white flex items-center justify-center p-4">
+<body class="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#000000] via-[#0f0f00] to-yellow-950 text-white flex items-center justify-center p-4">
     <div class="w-full max-w-md p-6 bg-gray-900 bg-opacity-80 rounded-2xl shadow-2xl backdrop-filter backdrop-blur-lg border border-gray-700">
         <!-- Header with Logo or Title -->
         <div class="flex items-center justify-center mb-6">
