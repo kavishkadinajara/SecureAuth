@@ -21,9 +21,9 @@ $isLoggedIn = isset($_SESSION['user_id']);
 </head>
 <body class="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#000000] via-[#0f0f00] to-yellow-950 text-white flex items-center justify-center p-4">
     <div class="w-full max-w-md p-6 bg-gray-900 bg-opacity-80 rounded-2xl shadow-2xl backdrop-filter backdrop-blur-lg border border-gray-700">
-        <!-- Header with Logo or Title -->
+        <!-- Header with Title -->
         <div class="flex items-center justify-center mb-6">
-            <!-- Optionally add an icon or logo here -->
+            
             <svg class="w-10 h-10 text-yellow-400 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2L2 12h3v8h8v-8h3L12 2z"></path>
             </svg>
@@ -35,7 +35,14 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <p class="text-lg text-center mb-4">Hello, <span class="font-semibold"><?php echo htmlspecialchars($_SESSION['username']); ?></span>!</p>
             <div class="mt-4 flex justify-center space-x-4">
                 <a href="./src/auth/logout.php" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-md transform hover:scale-105 transition duration-300">Logout</a>
-                <a href="../src/views/dashboard.php" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md transform hover:scale-105 transition duration-300">Go to Dashboard</a>
+                
+                <?php if ($_SESSION['role_id'] == 1): ?>
+                    <!-- Admin dashboard -->
+                    <a href="./dashboard.php" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md transform hover:scale-105 transition duration-300">Go to Admin Dashboard</a>
+                <?php else: ?>
+                    <!-- User dashboard -->
+                    <a href="./my_dashboard.php" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md transform hover:scale-105 transition duration-300">Go to User Dashboard</a>
+                <?php endif; ?>
             </div>
         <?php else: ?>
             <!-- Content for guests -->

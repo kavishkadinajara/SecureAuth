@@ -48,15 +48,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role_id'] = $user['role_id'];
             $_SESSION['username'] = $user['username'];
-
+            $_SESSION['last_activity'] = time(); // Store the current time as last activity
+        
             // Reset failed attempts on successful login
             $stmt = $pdo->prepare('DELETE FROM failed_logins WHERE user_id = ?');
             $stmt->execute([$user_id]);
-
+        
             // Logging the login action
             $stmt = $pdo->prepare('INSERT INTO user_logs (user_id, action) VALUES (?, ?)');
             $stmt->execute([$user['id'], 'Login']);
-
+        
             header('Location: ../../');
             exit();
         } else {
